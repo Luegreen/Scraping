@@ -1,6 +1,6 @@
 from flask import Flask, render_template, redirect, url_for
 from flask_pymongo import PyMongo
-import Mission_to_Mars_Challenge
+import scraping
 
 app = Flask(__name__)
 
@@ -11,23 +11,24 @@ mongo = PyMongo(app)
 @app.route("/")
 def index():
     mars = mongo.db.mars.find_one()
-    #print(mars)
-    #return render_template("index.html", mars=mars)
+    print(mars)
+    return render_template("index.html", mars=mars)
+
 
 @app.route("/scrape")
-def scrape():
-    mars = mongo.db.mars
-    mars_data = Mission_to_Mars_Challenge.scrape_all()
-    mars.update({}, mars_data, upsert=True)
-    return redirect('/', code=302)
+def scrape_all():
+     mars = mongo.db.mars
+     mars_data = scraping.scrape_all()
+     mars.update({}, mars_data, upsert=True)
+     return redirect('/', code=302)
     
-# @app.route("/scrape")
-# def scrape():
-#     mars = mongo.db.mars
-#     mars_data = Mission_to_Mars_Challenge.hemi()
-#     mars.update({}, mars_data, upsert=True)
-#     return redirect('/', code=302)
-#     #print(mars_data)
+#@app.route("/scrape")
+#def scrape_all():
+ #   mars = mongo.db.mars
+  #  mars_data = Mission_to_Mars_Challenge.mars_hemispheres()
+  #  mars.update({}, mars_data, upsert=True)
+    #return redirect('/', code=302)
+ #   print(mars_data)
 
 
 
