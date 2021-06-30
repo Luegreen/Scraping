@@ -22,15 +22,6 @@ def scrape_all():
      print(mars_data)
      mars.update({}, mars_data, upsert=True)
      return redirect('/', code=302)
-    
-#@app.route("/scrape")
-#def scrape_all():
- #   mars = mongo.db.mars
-  #  mars_data = Mission_to_Mars_Challenge.mars_hemispheres()
-  #  mars.update({}, mars_data, upsert=True)
-    #return redirect('/', code=302)
- #   print(mars_data)
-
 
 
 
