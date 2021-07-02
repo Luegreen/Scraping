@@ -118,6 +118,7 @@ hemisphere_image_urls = []
 
 # 3. Write code to retrieve the image urls and titles for each hemisphere.
 def mars_hemispheres():
+    hemisphere_image_urls = [""]
     executable_path = {'executable_path': ChromeDriverManager().install()}
     browser = Browser('chrome', **executable_path, headless=False)
     url1 = 'https://marshemispheres.com/'
