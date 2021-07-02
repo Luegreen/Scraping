@@ -1,9 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
-
-
-
-
+# Import Splinter and BeautifulSoup
 # Import Splinter and BeautifulSoup and Pandas
 from splinter import Browser
 from bs4 import BeautifulSoup as soup
@@ -14,10 +11,12 @@ import time
 
 
 def scrape_all():
+    
     # Set up Splinter initiate headless driver for deployment
     executable_path = {'executable_path': ChromeDriverManager().install()}
     browser = Browser('chrome', **executable_path, headless=True)
     
+
     news_title, news_paragraph = mars_news(browser)
 
     #Run all scraping functions and store results in dictionary
@@ -26,7 +25,7 @@ def scrape_all():
         "news_paragraph": news_paragraph,
         "featured_image": featured_image(browser),
         "facts": mars_facts(),
-        "hemispheres": mars_hemispheres(browser),
+        "hemispheres": mars_hemispheres(),
         "last_modified": dt.datetime.now()
     }
     #stop webdriver and return data 
@@ -113,45 +112,51 @@ def mars_facts():
 # 
 
 # 1. Use browser to visit the URL 
-def mars_hemispheres(browser):
-    try:    
-        url1 = 'https://marshemispheres.com/'
-        browser.visit(url1)
+
+
 
 # 2. Create a list to hold the images and titles.
-        hemisphere_image_urls = []
+hemisphere_image_urls = []
 
 # 3. Write code to retrieve the image urls and titles for each hemisphere.
+def mars_hemispheres():
 
-        for i in range(0,4):
-            hemispheres = {}
-            try:
-                browser.find_by_css('a.product-item img')[i].click()
-                title=browser.find_by_css('h2.title')
-                #print(title.text)
-                time.sleep(2)
-                imgs = browser.find_by_text('Sample')
-                #print(imgs['href'])
-                time.sleep(2)
-                hemispheres["title"]=title.text
-                hemispheres["imgs"]=imgs['href']
-                hemisphere_image_urls.append(hemispheres)
-                print(hemispheres)
-                browser.back()
-            except Exception as e:
-                print(e)
+    executable_path = {'executable_path': ChromeDriverManager().install()}
+    browser = Browser('chrome', **executable_path, headless=False)
+    url1 = 'https://marshemispheres.com/'
+    browser.visit(url1)
+    for i in range(0,4):
+        hemispheres = {}
+        try:
+            browser.find_by_css('a.product-item img')[i].click()
+            title=browser.find_by_css('h2.title')
+            #print(title.text)
+            time.sleep(2)
+            img_url = browser.find_by_text('Sample')
+            #imgs = browser.find_by_text('Sample')
+            #print(img_url['href'])
+            time.sleep(2)
+            hemispheres["title"]=title.text
+            hemispheres["img_url"]=img_url['href']
+            #hemispheres["imgs"]=imgs['href']
+            hemisphere_image_urls.append(hemispheres)
+            browser.back()
+            
+        except Exception as e:
+            print(e)
 
-    except BaseException:
-        return None
-# 4. Print the list that holds the dictionary of each image url and title.
+    return(hemisphere_image_urls)
+    # 4. Print the list that holds the dictionary of each image url and title.
+
+
     hemisphere_image_urls
-
-# 5. Quit the browser
+    # 5. Quit the browser
     browser.quit()
 
-if __name__ == "__main__":
-    #If running as script, print scraped data
-    print(scrape_all())
+
+# 4. Print the list that holds the dictionary of each image url and title.
+
+
 
 
 
