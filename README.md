@@ -4,6 +4,15 @@ Web Scraping, HTML, Chrome Development tools, Splinter, BeautifulSoup, MongoDB, 
 
 ### Final working code: 
 
+1) Run app.py first, then click the index file, then look at localhost 5000. 
+  I was running index first without looking at local host. THEN I was looking at localhost without runnin the .py file
+  
+2) to make changes to the index file and have them show up on the local host front end, you have to make sure the flask python file is in debug mode. Then, for production, turn off debug mode
+
+I worked with a number of guides to figure these steps out, but the steps were so simple that I didn't realize what exactly was fixing the problem until now. (each session I'd learn a little bit more... 'ah, you have to look at localhost: 5000' 'oh, refreshing the index file is not enough, you need the debuger in the flask file'. (I actually discovered this one through documentation.) 
+
+The harder pieces of the challenge were setting up the flask file to save the mongo database. With some clear print statements set throughout the code, with the help of a tutor, I was able to find out why the hemisphere images were not being collected and fix that error in the scrape.py code. The problem was that we were rushing the code and needed to add a time.sleep(2) element to the function. 
+
 As direction by the flask documentation: the file structure is set up as follows: 
 <ul><li>my-flask-app ----> templates -----> index.html </li>
 <li>        ----> app.py</li>
@@ -14,14 +23,7 @@ learnings:
 There were four relatively simple steps that held me back over a week on this project. I kept receiving 'connection refused' and/or 'file not found' errors. In fact, when I originally submitted the files, they were all correct. I was just running them wrong. Frustrating but the kind of lesson you only have to learn once. The following steps will prevent those errors in the future: 
 
 
-1) Run app.py first, then click the index file, then look at localhost 5000. 
-  I was running index first without looking at local host. THEN I was looking at localhost without runnin the .py file
-  
-2) to make changes to the index file and have them show up on the local host front end, you have to make sure the flask python file is in debug mode. Then, for production, turn off debug mode
 
-I worked with a number of guides to figure these steps out, but the steps were so simple that I didn't realize what exactly was fixing the problem until now. (each session I'd learn a little bit more... 'ah, you have to look at localhost: 5000' 'oh, refreshing the index file is not enough, you need the debuger in the flask file'. (I actually discovered this one through documentation.) 
-
-The harder pieces of the challenge were setting up the flask file to save the mongo database. With some clear print statements set throughout the code, with the help of a tutor, I was able to find out why the hemisphere images were not being collected and fix that error in the scrape.py code. The problem was that we were rushing the code and needed to add a time.sleep(2) element to the function. 
 
 ### Conclusion:
 
