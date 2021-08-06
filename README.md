@@ -1,5 +1,6 @@
 # Scraping
 
+Web Scraping, HTML, Chrome Development tools, Splinter, BeautifulSoup, MongoDB, Python3, Flask to the end of a working webSite that scrapes new data at the push of a button. 
 
 ### Final working code: 
 
@@ -13,7 +14,7 @@ learnings:
 There were four relatively simple steps that held me back over a week on this project. I kept receiving 'connection refused' and/or 'file not found' errors. In fact, when I originally submitted the files, they were all correct. I was just running them wrong. Frustrating but the kind of lesson you only have to learn once. The following steps will prevent those errors in the future: 
 
 
-1) you have to run app.py first, then click the index file, then look at localhost 5000. 
+1) Run app.py first, then click the index file, then look at localhost 5000. 
   I was running index first without looking at local host. THEN I was looking at localhost without runnin the .py file
   
 2) to make changes to the index file and have them show up on the local host front end, you have to make sure the flask python file is in debug mode. Then, for production, turn off debug mode
