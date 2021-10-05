@@ -2,6 +2,14 @@
 
 Web Scraping, HTML, Chrome Development tools, Splinter, BeautifulSoup, MongoDB, Python3, Flask to the end of a working webSite that scrapes new data at the push of a button. 
 
+<ol>
+  
+<li>Splinter: Automate Web Application (allowing Python to initiate the opening of a browser which then can be scraped. </li>
+<li>Flask: A Python API that allows building of web-applications. The framework is more explicit than Django.</li> 
+<li>MongoDB: A document database. Can stor structured or unscructured data (such as pictures etc not in table form). Can handle high bolumen and scaple vertically or horizonally, uses JSON-like format to store data.</li>
+<li>BeaufifulSoup: used for web scraping, to pull data out of HTML and XML files.</li> 
+</ol>
+
 ### Final working code: 
 
 1) Run app.py first, then click the index file, then look at localhost 5000. 
